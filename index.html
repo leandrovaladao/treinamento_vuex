@@ -10,7 +10,8 @@
             <p v-once>Meu nome é: {{ name }}</p>
             <input v-on:input="changeName"><br>
             <a v-bind:href="docs">VueJs</a><br>
-            <span v-text="name"></span>
+            <span v-text="name"></span><br>
+            <span v-html="html_message"></span>
         </div>
 
         <script type="text/javascript">
@@ -20,6 +21,7 @@
                     message: 'Olá mundo!',
                     name: 'Leandro Teste',
                     docs: 'https://vuejs.org/',
+                    html_message: 'Teste <span style="color: red">HTML</span>'
                 },
                 methods: {
                     changeName: function (event) {
