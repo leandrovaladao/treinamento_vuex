@@ -11,7 +11,10 @@
             <input v-on:input="changeName"><br>
             <a v-bind:href="docs">VueJs</a><br>
             <span v-text="name"></span><br>
-            <span v-html="html_message"></span>
+            <span v-html="html_message"></span><br>
+            <button v-on:click="increment">Clique aqui!</button>
+            <p>Botão clicado {{ count_clique }} vezes.</p>
+            <p v-on:mousemove="attCoordinates">Coordenadas x: {{ x }} e y: {{ y }}</p>
         </div>
 
         <script type="text/javascript">
@@ -21,11 +24,22 @@
                     message: 'Olá mundo!',
                     name: 'Leandro Teste',
                     docs: 'https://vuejs.org/',
-                    html_message: 'Teste <span style="color: red">HTML</span>'
+                    html_message: 'Teste <span style="color: red">HTML</span>',
+                    count_clique: 0,
+                    x: 0,
+                    y: 0
                 },
                 methods: {
                     changeName: function (event) {
                         this.name = event.target.value
+                    },
+                    increment: function (event) {
+                        console.log(event)
+                        this.count_clique++;
+                    },
+                    attCoordinates: function (event) {
+                        this.x = event.clientX;
+                        this.y = event.clientY;
                     }
                 }
             });

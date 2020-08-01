@@ -1,0 +1,42 @@
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Trienamento VueX</title>
+        <meta charset="utf-8">
+        <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <input v-on:blur="showName($event, 'Meu nome é: ')">
+            <p>Nome: {{ name }}</p>
+            <p v-on:click="onClick($event, 'p')">
+                Treinamento VueJS
+                <button v-on:click.stop="onClick($event, 'button')">Clique</button>
+            </p>
+            <form>
+                <input type="text">
+                <button type="submit" v-on:click.prevent="onSubmit">Com modificador</button>
+                <button type="submit" v-on:click="onSubmit">Sem modificador</button>
+            </form>
+        </div>
+
+        <script type="text/javascript">
+            new Vue({
+                el: '#app',
+                data: {
+                    name: '',
+                },
+                methods: {
+                    showName: function (event, prefix_text) {
+                        this.name = prefix_text + event.target.value
+                    },
+                    onClick: function (event, mainObject) {
+                        console.log(event.type, ':', mainObject)
+                    },
+                    onSubmit: function (event) {
+                        console.log('Enviado')
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
