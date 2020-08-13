@@ -1,0 +1,32 @@
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Trienamento VueX</title>
+        <meta charset="utf-8">
+        <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <p>{{ course }} => {{ inverted_course }}</p>
+            <input @keyup.enter="changeCourse">
+        </div>
+
+        <script type="text/javascript">
+            new Vue({
+                el: "#app",
+                data: {
+                    course: 'Teste'
+                },
+                methods: {
+                    changeCourse: function (event) {
+                        this.course = event.target.value;
+                    }
+                },
+                computed: {
+                    inverted_course: function () {
+                        return this.course.split('').reverse().join('')
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
