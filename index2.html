@@ -17,6 +17,13 @@
                 <button type="submit" v-on:click.prevent="onSubmit">Com modificador</button>
                 <button type="submit" v-on:click="onSubmit">Sem modificador</button>
             </form>
+            <button v-on:click="onClick2">Botão Clicado</button>
+            <br>
+            <button v-on:click.middle="onClick2">Botão Clicado</button>
+            <br>
+            <button v-on:click.right="onClick2">Botão Clicado</button>
+            <br>
+            <button v-on:click.right.prevent="onClick2">Botão Clicado sem menu</button>
         </div>
 
         <script type="text/javascript">
@@ -34,6 +41,9 @@
                     },
                     onSubmit: function (event) {
                         console.log('Enviado')
+                    },
+                    onClick2: function (event) {
+                        console.log('Botão ' + event.button + ' pressionado!')
                     }
                 }
             });
